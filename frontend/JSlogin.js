@@ -5,7 +5,7 @@ async function validateLogin() {
     let password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("http://localhost:9090/api/auth/login", {
+        const response = await fetch("https://dosewiseai.onrender.com/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
