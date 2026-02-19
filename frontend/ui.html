@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PharmaGuard</title>
+  <link rel="stylesheet" href="ux.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <span class="icon">🧬</span> PharmaGuard
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Upload Data</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <button class="btn" onclick="logout()">Logout</button>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Personalized Drug Risk Prediction</h1>
+    <p>
+      Upload your genetic data and get AI-powered pharmacogenomic insights.
+    </p>
+    <button id="uploadBtn" class="hero-btn" onclick="openForm()">Upload Genetic Data</button>
+  </section>
+
+  <!-- Upload Modal -->
+  <div id="uploadModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeForm()">&times;</span>
+      <h2>Upload Genetic Data</h2>
+
+      <form id="uploadForm">
+        <div>
+          <label>Upload VCF File</label>
+          <input type="file" name="vcffile" accept=".vcf" required />
+        </div>
+        <div>
+          <label>Enter Drug Name</label>
+          <input type="text" name="drug" placeholder="CLOPIDOGREL / CODEINE" required />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="resultBox" class="hidden">
+        <h3>Risk Assessment</h3>
+        <div id="riskLabel" class="risk-label"></div>
+        <pre id="jsonOutput"></pre>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  // 🔐 Token check
+  const token = localStorage.getItem("token");
+  if (!token) window.location.href = "login.html";
+
+  function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+  }
+
+  function openForm() {
+    document.getElementById("uploadModal").style.display = "flex";
+  }
+
+  function closeForm() {
+    document.getElementById("uploadModal").style.display = "none";
+  }
+
+  // 🔹 Form submit to Node.js backend
+  document.getElementById("uploadForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const response = await fetch("/analyze", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    // Show result
+    const resultBox = document.getElementById("resultBox");
+    resultBox.classList.remove("hidden");
+
+    const riskLabel = document.getElementById("riskLabel");
+    riskLabel.textContent = data.risk_label;
+
+    // Color coding
+    if(data.risk_label === "Safe") riskLabel.className = "risk-label safe";
+    else if(data.risk_label === "Adjust Dosage") riskLabel.className = "risk-label moderate";
+    else riskLabel.className = "risk-label high";
+
+    document.getElementById("jsonOutput").textContent = JSON.stringify(data, null, 2);
+
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    background: linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)
+    ),
+    url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f");
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.register-container{
+    width:100%;
+    max-width:400px;
+}
+
+.register-box{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:40px;
+    border-radius:15px;
+    color:#fff;
+    box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+
+.register-box h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.input-group{
+    position:relative;
+    margin-bottom:25px;
+}
+
+.input-group input{
+    width:100%;
+    padding:10px;
+    background:transparent;
+    border:none;
+    border-bottom:2px solid #fff;
+    outline:none;
+    color:#fff;
+}
+
+.input-group label{
+    position:absolute;
+    left:0;
+    top:10px;
+    pointer-events:none;
+    transition:0.3s;
+    color:#ccc;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label{
+    top:-15px;
+    font-size:12px;
+    color:#00f2ff;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#00f2ff;
+    color:#000;
+    font-size:16px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#00c6d4;
+}
+
+.footer-text{
+    text-align:center;
+    margin-top:20px;
+    font-size:14px;
+}
+.footer-text a{
+    color:#00f2ff;
+    text-decoration:none;
+}

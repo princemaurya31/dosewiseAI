@@ -1,0 +1,152 @@
+body {
+    background-image: url("medicine.jpeg"); /* apna local image ya link */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffd369;
+}
+
+.btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ffd369;
+  color: #1e3c72;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #ffbe33;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  background: linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),
+    url("https://images.unsplash.com/photo-1581092160613-bb5c5a6c03c0") center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin-bottom: 25px;
+}
+
+.hero-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  border-radius: 25px;
+  border: none;
+  background: #ffd369;
+  color: #1e3c72;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  background: #ffbe33;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  margin-bottom: 15px;
+}
+
+.modal-content button {
+  padding: 8px 20px;
+  border: none;
+  background: #2a5298;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}

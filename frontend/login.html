@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="login-container">
+    <form class="login-box" onsubmit="return validateLogin()">
+        <h2>Welcome Back</h2>
+
+        <div class="input-group">
+            <input type="email" id="email" required>
+            <label>Email</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" required>
+            <label>Password</label>
+        </div>
+
+        <div class="options">
+            <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <p class="footer-text">© 2026 Secure Login</p>
+    </form>
+</div>
+
+<script src="JSlogin.js"></script>
+</body>
+</html>
